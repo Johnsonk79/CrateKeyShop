@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener {
 			switch($result){
 				case 0:
 					if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player) >= $this->getConfig()->get("common.price")){
-						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key Common ".$player->getName()." ".$this->getConfig()->get("common.amount"));
+						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key common-kit ".$player->getName()." ".$this->getConfig()->get("common.amount"));
 						$player->sendMessage($this->getConfig()->get("common.success.purchase"));
 						EconomyAPI::getInstance()->reduceMoney($player, $this->getConfig()->get("common.price"));
 					} else {
@@ -56,7 +56,7 @@ class Main extends PluginBase implements Listener {
 				break;
 				case 1:
 					if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player) >= $this->getConfig()->get("uncommon.price")){
-						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key UnCommon ".$player->getName()." ".$this->getConfig()->get("uncommon.amount"));
+						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key rare-kit ".$player->getName()." ".$this->getConfig()->get("uncommon.amount"));
 						$player->sendMessage($this->getConfig()->get("uncommon.success.purchase"));
 						EconomyAPI::getInstance()->reduceMoney($player, $this->getConfig()->get("uncommon.price"));
 					} else {
@@ -65,7 +65,7 @@ class Main extends PluginBase implements Listener {
 				break;
 				case 2:
 					if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player) >= $this->getConfig()->get("mythic.price")){
-						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key Mythic ".$player->getName()." ".$this->getConfig()->get("mythic.amount"));
+						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key legendary-kit ".$player->getName()." ".$this->getConfig()->get("mythic.amount"));
 						$player->sendMessage($this->getConfig()->get("mythic.success.purchase"));
 						EconomyAPI::getInstance()->reduceMoney($player, $this->getConfig()->get("mythic.price"));
 					} else {
@@ -74,7 +74,7 @@ class Main extends PluginBase implements Listener {
 				break;
 				case 3:
 					if(\pocketmine\Server::getInstance()->getPluginManager()->getPlugin("EconomyAPI")->myMoney($player) >= $this->getConfig()->get("legendary.price")){
-						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key Legendary ".$player->getName()." ".$this->getConfig()->get("legendary.amount"));
+						$this->getServer()->dispatchCommand(new \pocketmine\command\ConsoleCommandSender(), "key rare-weapon ".$player->getName()." ".$this->getConfig()->get("legendary.amount"));
 						$player->sendMessage($this->getConfig()->get("legendary.success.purchase"));
 						EconomyAPI::getInstance()->reduceMoney($player, $this->getConfig()->get("legendary.price"));
 					} else {
@@ -84,10 +84,10 @@ class Main extends PluginBase implements Listener {
 			}
 		});					
 		$form->setTitle("CrateKey Shop");
-		$form->addButton("§eCommon\n§aPrice: §e".$this->getConfig()->get("common.price"));
-		$form->addButton("§eUnCommon\n§aPrice: §e".$this->getConfig()->get("uncommon.price"));
-		$form->addButton("§eMythic\n§aPrice: §e".$this->getConfig()->get("mythic.price"));
-		$form->addButton("§eLegendary\n§aPrice: §e".$this->getConfig()->get("legendary.price"));
+		$form->addButton("§fCommon Kit Key\n§aPrice: §e".$this->getConfig()->get("common.price"));
+		$form->addButton("§bRare Kit Key\n§aPrice: §e".$this->getConfig()->get("uncommon.price"));
+		$form->addButton("§cLegendary Kit Key\n§aPrice: §e".$this->getConfig()->get("mythic.price"));
+		$form->addButton("§aRare Weapon Key\n§aPrice: §e".$this->getConfig()->get("legendary.price"));
 		$form->sendToPlayer($player);
 	}
 }
